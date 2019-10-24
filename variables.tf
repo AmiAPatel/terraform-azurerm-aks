@@ -8,14 +8,12 @@ variable location {
 }
 
 ## Resource group variables ##
-variable resource_group_name {
-  default = "aksdemo-rg"
-}
+variable resource_group_name {}
 
 
 ## AKS kubernetes cluster variables ##
 variable cluster_name {
-  default = "aksdemo1"
+  default = "aks-poc"
 }
 
 variable "agent_count" {
@@ -23,7 +21,7 @@ variable "agent_count" {
 }
 
 variable "dns_prefix" {
-  default = "aksdemo"
+  default = "akspoc"
 }
 
 variable "admin_username" {

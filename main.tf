@@ -1,6 +1,5 @@
 ## Azure resource provider ##
 provider "azurerm" {
-  version = "=1.5.0"
 }
 
 ## Private key for the kubernetes cluster ##
@@ -10,7 +9,7 @@ resource "tls_private_key" "key" {
 
 ## Save the private key in the local workspace ##
 resource "null_resource" "save-key" {
-  triggers {
+  triggers = {
     key = "${tls_private_key.key.private_key_pem}"
   }
 
@@ -57,7 +56,7 @@ resource "azurerm_kubernetes_cluster" "aks_demo" {
     client_secret = "${var.client_secret}"
   }
 
-  tags {
+  tags = {
     Environment = "Production"
   }
 }

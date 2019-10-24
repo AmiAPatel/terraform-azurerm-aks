@@ -41,12 +41,9 @@ Expected output:
 Export environment variables to configure the [Azure](https://www.terraform.io/docs/providers/azurerm/index.html) Terraform provider.
 
 ```bash
-export ARM_SUBSCRIPTION_ID="YOUR_SUBSCRIPTION_ID"
-export ARM_TENANT_ID="TENANT_ID"
-export ARM_CLIENT_ID="CLIENT_ID"
-export ARM_CLIENT_SECRET="CLIENT_SECRET"
-export TF_VAR_client_id=${ARM_CLIENT_ID}
-export TF_VAR_client_secret=${ARM_CLIENT_SECRET}
+export TF_VAR_client_id={Replace this with your client id}
+export TF_VAR_client_secret={Replace this with your client secret}
+export TF_VAR_resource_group_name={Replace this with the name of your resource group}
 ```
 
 Run Terraform init and plan.
