@@ -23,16 +23,20 @@ EOF
 }
 
 ## Azure resource group for the kubernetes cluster ##
-resource "azurerm_resource_group" "aks_demo" {
-  name     = "${var.resource_group_name}"
-  location = "${var.location}"
-}
+## Comment out below block if you're using an existing RG, as you don't want TF to manage that RG for you.
+# resource "azurerm_resource_group" "aks_demo" {
+#   name     = "${var.resource_group_name}"
+#   location = "${var.location}"
+# }
 
 ## AKS kubernetes cluster ##
 resource "azurerm_kubernetes_cluster" "aks_demo" { 
   name                = "${var.cluster_name}"
-  location            = "${azurerm_resource_group.aks_demo.location}"
-  resource_group_name = "${azurerm_resource_group.aks_demo.name}"
+#  location            = "${azurerm_resource_group.aks_demo.location}"
+#  resource_group_name = "${azurerm_resource_group.aks_demo.name}"
+
+  location            = "centralus"
+  resource_group_name = "${var.resource_group_name}"
   dns_prefix          = "${var.dns_prefix}"
 
   linux_profile {
@@ -57,7 +61,7 @@ resource "azurerm_kubernetes_cluster" "aks_demo" {
   }
 
   tags = {
-    Environment = "Production"
+    Environment = "POC"
   }
 }
 
